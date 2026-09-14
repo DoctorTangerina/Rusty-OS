@@ -3,5 +3,5 @@
 version = 4
 
 [[package]]
-name = "Rusty-OS"
+name = "rusty-os"
 version = "0.1.0"
