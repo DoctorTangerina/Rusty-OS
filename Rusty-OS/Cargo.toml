@@ -3,6 +3,11 @@ name = "Rusty-OS"
 version = "0.1.0"
 edition = "2024"
 
+[[bin]]
+name = "Rusty-OS"
+test = false
+bench = false
+
 [profile.dev]
 panic = "abort"
 
