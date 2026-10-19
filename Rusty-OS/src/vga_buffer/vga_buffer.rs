@@ -3,8 +3,8 @@ use volatile::Volatile;
 use lazy_static::lazy_static;
 use core::fmt;
 
-const BUFFER_HEIGHT: usize = 25;
-const BUFFER_WIDTH: usize = 80;
+pub const BUFFER_HEIGHT: usize = 25;
+pub const BUFFER_WIDTH: usize = 80;
 
 #[allow(dead_code)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -40,9 +40,15 @@ impl ColorCode {
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[repr(C)]
-struct ScreenChar {
+pub struct ScreenChar {
     character: u8,
     color_code: ColorCode
+}
+
+impl ScreenChar {
+    pub fn get_character(&self) -> u8 {
+        self.character
+    }
 }
 
 struct Buffer {
@@ -116,6 +122,10 @@ impl Writer {
         for col in 0..BUFFER_WIDTH {
             self.buffer.chars[row][col].write(blank);
         }
+    }
+
+    pub fn get_screen_char(&self, row: usize) -> ScreenChar {
+        WRITER.lock().buffer.chars[BUFFER_HEIGHT - 2][row].read()
     }
 }
 
