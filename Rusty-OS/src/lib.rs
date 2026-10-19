@@ -8,6 +8,7 @@
 use core::panic::PanicInfo;
 
 pub mod serial;
+pub mod test;
 pub mod vga_buffer;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
