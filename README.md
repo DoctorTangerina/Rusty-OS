@@ -7,7 +7,7 @@ This project’s purpose is to try and create something that will help me get us
 ### Roadmap
 
 - [X] VGA Terminal
-- [ ] Testing  
+- [X] Testing  
 - [ ] CPU Exceptions  
 - [ ] Double Faults  
 - [ ] Hardware Interrupts  
