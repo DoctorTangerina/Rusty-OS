@@ -12,9 +12,6 @@ pub extern "C" fn _start() -> ! {
     println!("Hello World{}", "!");
     //panic!("Panic at the disco!");
 
-    #[cfg(test)]
-    test_main();
-
     loop {}
 }
 
