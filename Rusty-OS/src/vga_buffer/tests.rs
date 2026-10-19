@@ -1,5 +1,7 @@
 #[cfg(test)]
 use crate::{println};
+#[cfg(test)]
+use crate::vga_buffer::vga_buffer::WRITER;
 
 #[test_case]
 fn test_println_simple() {
@@ -17,8 +19,8 @@ fn test_println_many() {
 fn test_println_output() {
     let s = "Some test string that fits on a single line";
     println!("{}", s);
-    // for (i, c) in s.chars().enumerate() {
-    //     let screen_char = WRITER.lock().get_screen_char(i);
-    //     assert_eq!(char::from(screen_char.get_character()), c);
-    // }
+    for (i, c) in s.chars().enumerate() {
+        let screen_char = WRITER.lock().get_screen_char(i);
+        assert_eq!(char::from(screen_char.get_character()), c);
+    }
 }

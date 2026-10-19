@@ -125,7 +125,7 @@ impl Writer {
     }
 
     pub fn get_screen_char(&self, row: usize) -> ScreenChar {
-        WRITER.lock().buffer.chars[BUFFER_HEIGHT - 2][row].read()
+        self.buffer.chars[BUFFER_HEIGHT - 2][row].read()
     }
 }
 
