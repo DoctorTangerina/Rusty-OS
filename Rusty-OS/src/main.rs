@@ -5,7 +5,7 @@
 #![reexport_test_harness_main = "test_main"]
 
 use core::panic::PanicInfo;
-use rusty_os::println;
+use rusty_os::{exit_qemu, QemuExitCode, println};
 
 #[unsafe(no_mangle)]
 pub extern "C" fn _start() -> ! {
@@ -14,7 +14,12 @@ pub extern "C" fn _start() -> ! {
     println!("Hello World{}", "!");
     //panic!("Panic at the disco!");
 
-    x86_64::instructions::interrupts::int3();
+    //x86_64::instructions::interrupts::int3();
+
+    // trigger a page fault
+    unsafe {
+        *(0xdeadbeef as *mut u8) = 42;
+    };
 
     println!("Actually works");
 
@@ -23,5 +28,7 @@ pub extern "C" fn _start() -> ! {
 
 #[panic_handler]
 fn panic(info: &PanicInfo) -> ! {
-    rusty_os::test_panic_handler(info)
+    println!("{}", info);
+    exit_qemu(QemuExitCode::Failed);
+    loop {}
 }
