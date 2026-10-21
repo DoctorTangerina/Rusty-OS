@@ -1,2 +1,2 @@
 pub mod definitions;
-pub mod tests;
+mod tests;

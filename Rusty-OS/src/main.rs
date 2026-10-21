@@ -9,8 +9,14 @@ use rusty_os::println;
 
 #[unsafe(no_mangle)]
 pub extern "C" fn _start() -> ! {
+    rusty_os::init();
+
     println!("Hello World{}", "!");
     //panic!("Panic at the disco!");
+
+    x86_64::instructions::interrupts::int3();
+
+    println!("Actually works");
 
     loop {}
 }
