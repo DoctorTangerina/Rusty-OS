@@ -8,7 +8,7 @@ This project’s purpose is to try and create something that will help me get us
 
 - [X] VGA Terminal
 - [X] Testing  
-- [ ] CPU Exceptions  
+- [X] CPU Exceptions  
 - [ ] Double Faults  
 - [ ] Hardware Interrupts  
 - [ ] Paging  
